@@ -1,11 +1,17 @@
 # import asyncio
-# from aiogram import types
+# from aiogram.types import Message
+# from aiogram import Router
+
 # from data.config import ADMINS
-# from loader import dp, db, bot
+# from loader import db, bot
 # import pandas as pd
 
-# @dp.message_handler(text="/allusers", user_id=ADMINS)
-# async def get_all_users(message: types.Message):
+
+# router_admin = Router()
+
+
+# @router_admin.message(text="/allusers", user_id=ADMINS)
+# async def get_all_users(message: Message):
 #     users = await db.select_all_users()
 #     id = []
 #     name = []
@@ -25,15 +31,15 @@
 #        await bot.send_message(message.chat.id, df)
        
 
-# @dp.message_handler(text="/advertisment", user_id=ADMINS)
-# async def send_ad_to_all(message: types.Message):
+# @router_admin.message(text="/advertisment", user_id=ADMINS)
+# async def send_ad_to_all(message: Message):
 #     users = await db.select_all_users()
 #     for user in users:
 #         user_id = user[-1]
 #         await bot.send_message(chat_id=user_id, text="TODO")
 #         await asyncio.sleep(0.05)
 
-# @dp.message_handler(text="/cleandb", user_id=ADMINS)
-# async def get_all_users(message: types.Message):
+# @router_admin.message(text="/cleandb", user_id=ADMINS)
+# async def get_all_users(message: Message):
 #     await db.delete_users()
 #     await message.answer("TODO")

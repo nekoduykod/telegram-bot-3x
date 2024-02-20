@@ -1,7 +1,6 @@
-from aiogram import Dispatcher
+from .throttling import ThrottlingMessage, ThrottlingCallback
 
-from .throttling import ThrottlingMiddleware
-
-
-def setup(dp: Dispatcher):
-    dp.middleware.setup(ThrottlingMiddleware())
+__all__ = [
+    'ThrottlingCallback',
+    'ThrottlingMessage',
+]

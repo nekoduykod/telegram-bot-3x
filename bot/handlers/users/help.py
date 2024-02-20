@@ -1,15 +1,19 @@
-from aiogram.dispatcher.filters import Command
+from aiogram import Router
+from aiogram.filters import Command
 from aiogram.types import Message
 
-from main import dp
-from bot.utils.misc import rate_limit
+# from bot.utils.misc import rate_limit   . Obsolete. Actually, check middleware.throttling (rate_limit)
 
 
-@rate_limit(limit=5)  # Anti-spam
-@dp.message_handler(Command("help"))
-async def start(message: Message):
-    await message.answer(" - You can ask ChatGPT directly 🤖\n"
-                         " - Choose issue and answer questions💬\n"
+help_router = Router()
+
+
+# @rate_limit(limit=5)  # Anti-spam
+@help_router.message(Command(commands=["help"]))
+async def help(message: Message):
+    await message.delete()
+    await message.answer(" - Ask AI directly 🤖\n"
+                         " - Choose issue to answer clarifying questions before request💬\n"
                          " You can skip or answer✅\n"
                          " - Exit🧹 - returns to main menu\n"
                          " - Donate💙💛 - popular charity links\n")

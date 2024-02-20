@@ -7,10 +7,11 @@
 #                                       CantParseEntities, MessageCantBeDeleted)
 
 
-# from loader import dp
+# from aiogram import Router
 
 
-# @dp.errors_handler()
+# error_router = Router()
+# @error_router.errors_handler()
 # async def errors_handler(update, exception):
 #     """
 #     Exceptions handler. Catches all exceptions within task factory tasks.

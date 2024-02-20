@@ -1,3 +1,3 @@
-# from .error_handler import dp
+# from .error_handler import error_router
 
-# __all__ = ["dp"]
+# error_routers = (error_router)

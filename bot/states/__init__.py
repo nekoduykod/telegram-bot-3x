@@ -1,1 +1,1 @@
-from .states import ChooseButton, Issue1Form, Issue2Form, Issue3Form, Issue4Form, LeavePhoto
+from .states import ChooseButton, Issue1Form, LeavePhoto

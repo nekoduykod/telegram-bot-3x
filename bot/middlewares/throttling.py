@@ -1,42 +1,51 @@
-import asyncio
+from typing import Callable, Awaitable, Any, Dict, Optional, MutableMapping
 
-from aiogram import types, Dispatcher
-from aiogram.dispatcher import DEFAULT_RATE_LIMIT
-from aiogram.dispatcher.handler import CancelHandler, current_handler
-from aiogram.dispatcher.middlewares import BaseMiddleware
-from aiogram.utils.exceptions import Throttled
+from aiogram import BaseMiddleware
+from aiogram.types import TelegramObject, User, Message, CallbackQuery
+from cachetools import TTLCache
+
+from bot.data import settings
 
 
-class ThrottlingMiddleware(BaseMiddleware):
-    """
-    Simple middleware
-    """
+class ThrottlingMessage(BaseMiddleware):
 
-    def __init__(self, limit=DEFAULT_RATE_LIMIT, key_prefix='antiflood_'):
-        self.rate_limit = limit
-        self.prefix = key_prefix
-        super(ThrottlingMiddleware, self).__init__()
+    def __init__(self, rate_limit: float = settings.rate_limit) -> None:
+        self.cache: MutableMapping[int, None] = TTLCache(maxsize=10_000, ttl=rate_limit)
 
-    # noinspection PyUnusedLocal
-    async def on_process_message(self, message: types.Message, data: dict):
-        handler = current_handler.get()
-        dispatcher = Dispatcher.get_current()
-        if handler:
-            limit = getattr(handler, 'throttling_rate_limit', self.rate_limit)
-            key = getattr(handler, 'throttling_key', f"{self.prefix}_{handler.__name__}")
-        else:
-            limit = self.rate_limit
-            key = f"{self.prefix}_message"
-        try:
-            await dispatcher.throttle(key, rate=limit)
-        except Throttled as e:
-            await self.message_throttled(message, e)
-            raise CancelHandler()
+    async def __call__(
+            self,
+            handler: Callable[[TelegramObject, Dict[str, Any]], Awaitable[Any]],
+            event: Message,
+            data: Dict[str, Any],
+    ) -> Optional[Any]:
+        user: Optional[User] = data.get('event_from_user', None)
 
-    async def message_throttled(self, message: types.Message, throttled: Throttled):
-        delta = throttled.rate - throttled.delta
-        if throttled.exceeded_count == 2:
-            await message.reply('Будь ласка, не поспішайте')
-        elif throttled.exceeded_count == 3:
-            await message.reply("Так, більше не відповім")
-        await asyncio.sleep(delta)
+        if user is not None:
+            if user.id in self.cache:
+                return await event.answer(text='Wow, not so fast😲')
+
+            self.cache[user.id] = None
+
+        return await handler(event, data)
+
+
+class ThrottlingCallback(BaseMiddleware):
+
+    def __init__(self, rate_limit: float = settings.rate_limit) -> None:
+        self.cache: MutableMapping[int, None] = TTLCache(maxsize=10_000, ttl=rate_limit)
+
+    async def __call__(
+            self,
+            handler: Callable[[TelegramObject, Dict[str, Any]], Awaitable[Any]],
+            event: CallbackQuery,
+            data: Dict[str, Any],
+    ) -> Optional[Any]:
+        user: Optional[User] = data.get('event_from_user', None)
+
+        if user is not None:
+            if user.id in self.cache:
+                return await event.answer(text='Wow, not so fast😲', show_alert=True)
+
+            self.cache[user.id] = None
+
+        return await handler(event, data)
