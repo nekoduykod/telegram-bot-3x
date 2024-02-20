@@ -6,10 +6,7 @@ async def set_default_commands(dp) -> None:
         BotCommand(command="start", description="Start the bot and access the main menu."),
         BotCommand(command="help", description="Get instructions on how to use the bot."),
         BotCommand(command="gpt_request", description="Request text generation from ChatGPT directly."),
-        BotCommand(command="issues", description="Receive clarification and guidance before making a request."),
-        BotCommand(command="exit", description="Return to the main menu."),
-        BotCommand(command="donate", description="Find links to donate to Ukrainian charities."),
-        # TODO: Add descriptions for "contact_centre" and "email_us" commands when implemented.
+        BotCommand(command="exit", description="Return to the main menu.")
     ]
     try:
         await dp.bot.set_my_commands(commands)
