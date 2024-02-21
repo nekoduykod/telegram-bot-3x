@@ -1,1 +1,1 @@
-welcome_text = "🖐Вітаю. /help, /exit, /gpt_request."
+welcome_text = "👋вітаю. /help, /exit, /gpt_request."

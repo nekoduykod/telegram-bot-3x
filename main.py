@@ -18,8 +18,8 @@ async def main():
     # db = Database()
     router = get_handlers_router()
     dp.include_router(router)
-    await set_default_commands(dp)
-    
+
+    await set_default_commands(bot)
     await bot.delete_webhook(drop_pending_updates=True)
     await dp.start_polling(bot)
 

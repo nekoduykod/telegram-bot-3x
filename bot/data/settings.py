@@ -1,3 +1,5 @@
+''' I took this snippet from https://github.com/DOFER998/aiogram-bot-template/blob/main/src/data/settings.py
+    check middlewares/throttling.py where current module imported.'''
 from pydantic_settings import BaseSettings
 
 
