@@ -20,8 +20,13 @@ then respond on prompt in environment of that RAG index
   
 - data pipeline/feature 5: user gives github link and asks to perform actions over repository 
  
+Either surrealdb, or qdrant, marqo //
+surrealdb is sqlite-posgesql embedded/clould db with bunch of features
+qdrant is simple vector storage
+marqo is knowledge base
+
 ## Additional comments:
- 
+
 There is very little utility that individual developer or non corporate backed group of individuals that can be provided with just OpenAI GPT4 (or  lesser model) can provide without adding functionality that OpenAI won't provide: 
 1. Per prompt deep dive: crawling, fetching, indexing of the prompt related links, then grounded response - Open AI UI can provide only limited deepness level, proposed system can index vast knowledge that is private files of user/message/attachments history/specific to prompt 
 2. Specific referenced knowledge lookup: "find on this Youtube channel", "find in this podcast" - OpenAI won't do that because silly lawyers  
@@ -55,6 +60,7 @@ https://www.youtube.com/watch?app=desktop&v=T-D1OfcDW1M (RAG)
 ____________________________________________________________________
 ## Telegram aiogram 3+ examples:
 BEST:
+
 aiogram 3 & several basic functions.
 https://github.com/taimast/AiogramTemplate  2 11
 
@@ -68,6 +74,7 @@ aiogram 3.
 https://github.com/welel/aiogram-bot-template 3 9
 
 OTHERS:
+
 aiogram 3.
 https://github.com/makhmudjon-dev/Telegram_Bot_template  0  2 
 
