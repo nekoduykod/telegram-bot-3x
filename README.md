@@ -57,35 +57,6 @@ https://www.linkedin.com/pulse/pytorch-revolutionised-neural-networks-dspy-here-
 Podcast to rewatch: https://youtu.be/_ye26_8XPcs?si=L1hyFAENvrJwMZtc,
 https://youtu.be/NoaDWKHdkHg?si=D9ApoucexVick9x6 (about DSPY, RAG, LLM)
 https://www.youtube.com/watch?app=desktop&v=T-D1OfcDW1M (RAG)
-____________________________________________________________________
-## Telegram aiogram 3+ examples:
-BEST:
-
-aiogram 3 & several basic functions.
-https://github.com/taimast/AiogramTemplate  2 11
-
-3.x using PostgreSQL (asyncpg) with SQLAlchemy + alembic.
-https://github.com/wakaree/aiogram_bot_template  8 45
-
-a scalable and functional template for bots aiogram 3.x. // no routers here
-https://github.com/MassonNN/masson-aiogram-template/tree/main 18 forks 98 stars
-
-aiogram 3.
-https://github.com/welel/aiogram-bot-template 3 9
-
-OTHERS:
-
-aiogram 3.
-https://github.com/makhmudjon-dev/Telegram_Bot_template  0  2 
-
-Aiogram 3 web hook template via FastAPI
-https://github.com/QuvonchbekBobojonov/aiogram-webhook-template  1  2 
-
-aiogram 3.x.x & mongodb beanie
-https://github.com/sqlmerr/aiogram-bot-template 1 fork 3 star
-
-3.x 
-https://github.com/DOFER998/aiogram-bot-template/tree/main 0 fork 1 star
 __________________________________________________________________________________________
 
 ## TELEGRAM LIMITS DOC:
