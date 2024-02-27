@@ -4,7 +4,7 @@
 
 # echo_router = Router()
 
-''' it simply returns your message back. Trash)'''
+''' it simply returns your message back.'''
 # @echo_router.message()
 # async def echo_handler(message: Message):
 #     """
