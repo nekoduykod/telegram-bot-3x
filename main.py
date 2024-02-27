@@ -25,23 +25,3 @@ async def main():
 if __name__ == '__main__':
     logging.basicConfig(format=u'%(filename)s [LINE:%(lineno)d] #%(levelname)-8s [%(asctime)s]  %(message)s', level=logging.INFO)
     asyncio.run(main())
-
-
-# old 2.25
-# async def on_startup(dp):
-#     from bot.utils.notify_admins import on_startup_notify
-
-#     import bot.middlewares
-#     bot.middlewares.setup(dp)
-#     await set_default_commands(dp)
-#     await on_startup_notify(dp)
-
-# async def on_shutdown(dp):
-#     from bot.utils.notify_admins import on_shutdown_notify
-#     await on_shutdown_notify(dp)
-#     await bot.close()
-    
-    # executor.start_polling(dp, skip_updates=False, 
-    #                        on_startup=on_startup, 
-    #                        on_shutdown=on_shutdown, 
-    #                        allowed_updates=["message", "callback_query"])
