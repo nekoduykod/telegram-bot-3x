@@ -3,9 +3,7 @@ import logging
 
 from aiogram import Bot, Dispatcher
 from aiogram.fsm.storage.memory import MemoryStorage
-from aiogram.types import DefaultBotProperties
 from aiogram.enums import ParseMode
-
 # from utils.db_api.postgresql import Database
 from bot.data.config import BOT_TOKEN
 from bot.utils.set_bot_commands import set_default_commands
