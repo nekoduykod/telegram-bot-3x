@@ -7,7 +7,7 @@ from aiogram.enums import ParseMode
 # from utils.db_api.postgresql import Database
 from bot.data.config import BOT_TOKEN
 from bot.utils.set_bot_commands import set_default_commands
-from bot.handlers.users import user_routers
+from bot.handlers import get_handlers_router
 
 
 async def main():
@@ -15,9 +15,10 @@ async def main():
     storage = MemoryStorage()
     dp = Dispatcher(storage=storage)
     # db = Database()
-    dp.include_router(user_routers)
-    await set_default_commands(dp)
-    
+    router = get_handlers_router()
+    dp.include_router(router)
+
+    await set_default_commands(bot)
     await bot.delete_webhook(drop_pending_updates=True)
     await dp.start_polling(bot)
 

@@ -1,4 +1,4 @@
-''' example '''
+''' example of error logic is done in 3+ version '''
 
 # import logging
 # from aiogram.utils.exceptions import (Unauthorized, InvalidQueryID, TelegramAPIError,

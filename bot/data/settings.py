@@ -1,5 +1,5 @@
-from typing import Dict
-
+''' I took this snippet from https://github.com/DOFER998/aiogram-bot-template/blob/main/src/data/settings.py
+    check middlewares/throttling.py where current module imported.'''
 from pydantic_settings import BaseSettings
 
 
@@ -12,12 +12,3 @@ settings = Settings(
     _env_file='.env',
     _env_file_encoding='utf-8'
 )
-
-
-# class UserCommands(BaseSettings):
-#     commands: Dict[str, str] = {
-#         'start': '💼 Головне меню',
-#     }
-
-
-# user_commands = UserCommands()

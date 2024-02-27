@@ -7,10 +7,10 @@
 # import pandas as pd
 
 
-# router_admin = Router()
+# admin_router = Router()
 
 
-# @router_admin.message(text="/allusers", user_id=ADMINS)
+# @admin_router.message(text="/allusers", user_id=ADMINS)
 # async def get_all_users(message: Message):
 #     users = await db.select_all_users()
 #     id = []
