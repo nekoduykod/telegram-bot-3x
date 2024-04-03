@@ -2,6 +2,7 @@
 
 ## my notes
 
+LLM might be added. RAG + DSPY tools to use.
 Following data flow might be efficient:
 - llm/t5 model that categorizes user telegram message into available pipeline, sends out request to that pipeline, returns result - similar to https://huggingface.co/papers/2307.16789 or similar papers, or much easier, with hardcode and very fire data pipelines for now 
 
